@@ -3,18 +3,19 @@ from django.views import View
 import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-import json
-from django.http import JsonResponse
-from django.contrib.auth.models import User
+# import json
+# from django.http import JsonResponse
+# from django.contrib.auth.models import User
 from validate_email import validate_email
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
-from django.core.mail import send_mail
-from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_str
+# from django.utils.encoding import DjangoUnicodeDecodeError
+# from django.core.mail import send_mail
+# from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 from .utils import account_activation_token
 from django.urls import reverse
 from django.contrib import auth
@@ -154,8 +155,10 @@ class LoginView(View):
             if user:
                 if user.is_active:
                     auth.login(request, user)
-                    messages.success(request, 'Welcome, ' +
-                                     user.username + ' you are now logged in')
+                    messages.success(request,
+                                     'Welcome, '
+                                     + user.username
+                                     + ' you are now logged in')
                     return redirect('expenses')
                 messages.error(
                     request, 'Account is not active,please check your email')
